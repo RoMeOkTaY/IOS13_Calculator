@@ -1,24 +1,26 @@
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import *
 from ui_calculator import Ui_Calculator
 
 
-class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
+class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator,QPushButton):
     firstNum=None
     userisTypingSecNum=False
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.button0.clicked.connect(self.digit_pressed)
-        self.button1.clicked.connect(self.digit_pressed)
-        self.button2.clicked.connect(self.digit_pressed)
-        self.button3.clicked.connect(self.digit_pressed)
-        self.button4.clicked.connect(self.digit_pressed)
-        self.button5.clicked.connect(self.digit_pressed)
-        self.button6.clicked.connect(self.digit_pressed)
-        self.button7.clicked.connect(self.digit_pressed)
-        self.button8.clicked.connect(self.digit_pressed)
-        self.button9.clicked.connect(self.digit_pressed)
+        for i in range(0,10):
+            self.findChild(QPushButton,"button"+str(i)).clicked.connect(self.digit_pressed)
+        # self.button1.clicked.connect(self.digit_pressed)
+        # self.button2.clicked.connect(self.digit_pressed)
+        # self.button3.clicked.connect(self.digit_pressed)
+        # self.button4.clicked.connect(self.digit_pressed)
+        # self.button5.clicked.connect(self.digit_pressed)
+        # self.button6.clicked.connect(self.digit_pressed)
+        # self.button7.clicked.connect(self.digit_pressed)
+        # self.button8.clicked.connect(self.digit_pressed)
+        # self.button9.clicked.connect(self.digit_pressed)
         self.buttonvirgul.clicked.connect(self.decimal_pressed)
         self.buttonae.clicked.connect(self.artieksiyuzde)
         self.buttonyuzde.clicked.connect(self.artieksiyuzde)
